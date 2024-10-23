@@ -10,21 +10,21 @@ pygame.init()
 screen = pygame.display.set_mode((800, 600))
 
 # Background
-BG = pygame.image.load('Background.jpg')
+BG = pygame.image.load('pictures/background.jpg')
 # Credits: Photo by Free Nature Stock: https://www.pexels.com/photo/stars-during-nighttime-127577/
 
 # BG Music
-mixer.music.load('Back.wav')
+mixer.music.load('sounds/Back.wav')
 mixer.music.play(-1)
 # credits:Music track: Adventures Begin by Pufino(Source: https://freetouse.com/music)
 
 # Title and Icon
 pygame.display.set_caption("PokéRush")
-icon = pygame.image.load('pokemon.png')
+icon = pygame.image.load('pictures/pokemon.png')
 # Credits: Darius Dan(<a href="https://www.flaticon.com/free-icons/pokeball" title="pokeball icons">Pokeball icons created by Darius Dan - Flaticon</a>)
 pygame.display.set_icon(icon)
 # Player
-playerImg = pygame.image.load('1.png')
+playerImg = pygame.image.load('pictures/1.png')
 playerX = 350
 playerY = 450
 playerX_alter = 0
@@ -38,14 +38,14 @@ antaY_alter = []
 num_antas = 6
 
 for i in range(num_antas):
-    antaImg.append(pygame.image.load('2.png'))
+    antaImg.append(pygame.image.load('pictures/2.png'))
     antaX.append(random.randint(0, 800))
     antaY.append(random.randint(50, 150))
     antaX_alter.append(0.2)
     antaY_alter.append(30)
 
 # Fireball
-FireImg = pygame.image.load('fireball.png')
+FireImg = pygame.image.load('pictures/fireball.png')
 # Credit: <a href="https://www.flaticon.com/free-icons/fireball" title="fireball icons">Fireball icons created by Freepik - Flaticon</a>
 FireX = 0
 FireY = 450
@@ -68,7 +68,7 @@ textY = 10
 Over_Font = pygame.font.Font('freesansbold.ttf', 90)
 
 #Restart
-restart_button = pygame.image.load('Reset.png')
+restart_button = pygame.image.load('pictures/Reset.png')
 restart_button_rect = restart_button.get_rect()
 restart_button_rect.center = (400,350)
 
@@ -130,7 +130,7 @@ while running:
                     playerX_alter = +0.2
                 if event.key == pygame.K_SPACE:
                     if Fire_state == "ready":
-                        Fire_sound = mixer.Sound('Fireball.wav')
+                        Fire_sound = mixer.Sound('sounds/Fireball.wav')
                         Fire_sound.play()
                         FireX = playerX
                         fire(FireX, FireY)
@@ -167,7 +167,7 @@ while running:
         # Collision
         collision = isCollision(antaX[i], antaY[i], FireX, FireY)
         if collision:
-            EXP_sound = mixer.Sound('Explosion.wav')
+            EXP_sound = mixer.Sound('sounds/Explosion.wav')
             EXP_sound.play()
             FireY = 450
             Fire_state = "ready"
